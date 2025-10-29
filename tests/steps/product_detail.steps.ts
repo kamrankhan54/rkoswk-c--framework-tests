@@ -1,7 +1,7 @@
 import { createBdd } from 'playwright-bdd';
-import { test, expect } from '../support/fixtures';
+import { test } from '../support/fixtures';
 
-const { Given, When, Then } = createBdd(test);
+const { Given } = createBdd(test);
 
 Given('I go to the {string} product page', async ({ product }, name: string) => {
   await product.viewProductPage(name);
