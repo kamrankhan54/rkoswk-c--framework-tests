@@ -18,3 +18,9 @@ Then('Products should be ordered by {string}', async ({ inventory }, order: stri
 Then('The inventory should have all items displayed', async ({ inventory }) => {
   await expect(inventory.inventoryItem()).toHaveCount(6);
 });
+
+Then('Product {string} image should not have the placeholder image', async ({ inventory }, name: string) => {
+  const image = inventory.inventoryItemImage(name);
+  const src = await image.getAttribute('src');
+  expect(src).not.toContain('/static/media/sl-404.168b1cce.jpg');
+});

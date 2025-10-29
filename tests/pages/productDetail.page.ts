@@ -1,5 +1,4 @@
 import { Page, expect } from '@playwright/test';
-import { productSlug } from '../support/utils';
 
 export class ProductDetailPage {
   constructor(private page: Page) {};
