@@ -12,11 +12,17 @@ export class CartPage {
   inventoryItem() { return this.page.locator('[data-test="inventory-item"]') }
   itemName() { return this.page.locator('[data-test="inventory-item-name"]') }
   removeProduct(name: string) { return this.page.locator(`[data-test="remove-${name}"]`) }
+  checkoutButton() { return this.page.locator('[data-test="checkout"]') }
 
   async removeItem(name: string) {
     const slug = productSlug(name);
     const removeButton = this.removeProduct(slug);
     await expect(removeButton).toBeVisible();
     await removeButton.click();
+  }
+
+  async clickCheckout() {
+    await expect(this.checkoutButton()).toBeVisible();
+    this.checkoutButton().click();
   }
 }

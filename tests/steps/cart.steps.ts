@@ -7,6 +7,10 @@ Given('I open the cart page', async ({ cart }) => {
   await cart.open();
 })
 
+When('I click checkout', async ({ cart }) => {
+  await cart.clickCheckout();
+})
+
 Given('I remove {string} product from cart', async ({ cart }, name: string) => {
   await cart.removeItem(name);
 })

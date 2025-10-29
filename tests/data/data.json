@@ -2,5 +2,17 @@
     "loginPage": "https://qa-challenge.codesubmit.io/",
     "cartPage": "https://qa-challenge.codesubmit.io/cart.html",
     "inventoryPage": "https://qa-challenge.codesubmit.io/inventory.html",
-    "password": "secret_sauce"
+    "password": "secret_sauce",
+    "products": [
+        {
+          "title": "Sauce Labs Backpack",
+          "description": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+          "price": "$29.99",
+          "paymentInfo": "SauceCard #31337",
+          "shippingValue": "Free Pony Express Delivery!",
+          "itemTotal": "$29.99",
+          "tax": "$2.40",
+          "total": "Total: $32.39"
+        }
+    ]
 }
