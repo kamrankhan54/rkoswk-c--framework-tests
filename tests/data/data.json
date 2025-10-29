@@ -1,4 +1,6 @@
 {
     "loginPage": "https://qa-challenge.codesubmit.io/",
+    "cartPage": "https://qa-challenge.codesubmit.io/cart.html",
+    "inventoryPage": "https://qa-challenge.codesubmit.io/inventory.html",
     "password": "secret_sauce"
 }
