@@ -32,15 +32,21 @@ Make sure you have the following installed:
   pwsh bin/Debug/net9.0/playwright.ps1 install
 
 1️⃣ Restore dependencies
+  ```bash
 dotnet restore
+```
 
 2️⃣ Build the solution
+  ```bash
 dotnet build
+```
 
 3️⃣ Run tests
 
 From the tests folder:
+  ```bash
 dotnet test -c Debug -f net9.0
+```
 
 Generate Test Report (SpecFlow LivingDoc)
 
@@ -49,10 +55,16 @@ You can create a rich, interactive HTML report for all executed SpecFlow scenari
 🔧 Prerequisites
 
 Ensure the global LivingDoc CLI is installed:
+  ```bash
 dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+```
 
 Generate the HTML report:
+  ```bash
 livingdoc test-assembly bin/Debug/net9.0/tests.dll --output LivingDoc.html --test-execution-json bin/Debug/net9.0/TestExecution.json
+```
 
 Open reoprt: 
+  ```bash
 open LivingDoc.html
+```
