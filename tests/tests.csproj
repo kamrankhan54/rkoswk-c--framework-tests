@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+
+    <!-- Auto-download Playwright browsers on build -->
+    <PlaywrightInstallBrowsers>true</PlaywrightInstallBrowsers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Playwright for .NET -->
+    <PackageReference Include="Microsoft.Playwright" Version="1.48.0" />
+
+    <!-- SpecFlow + NUnit + test runner -->
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.74" PrivateAssets="all" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+  </ItemGroup>
+
+  <!-- Ensure test data is available at runtime -->
+  <ItemGroup>
+    <None Include="data\data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- (Optional) make code-behind show under .feature in IDE; generation is handled by the MsBuild package above -->
+  <ItemGroup>
+    <None Update="features\**\*.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>%(Filename).feature.cs</LastGenOutput>
+    </None>
+    <Compile Update="features\**\*.feature.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+<ItemGroup>
+  <!-- Keep your existing SpecFlow/Playwright/NUnit refs -->
+  <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
+</ItemGroup>
+
+</Project>

@@ -14,7 +14,6 @@ Scenario: Standard user places order with single product from inventory page
   Then The cart should have 1 items
   When I click checkout
   And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
-  And I click continue
   Then The checkout overview page is displayed for "Sauce Labs Backpack" product
   When I click finish
   Then The thank for your order page is displayed
@@ -30,7 +29,6 @@ Scenario: Standard user places order with single product from product page
   Then The cart should have 1 items
   When I click checkout
   And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
-  And I click continue
   Then The checkout overview page is displayed for "Sauce Labs Backpack" product
   When I click finish
   Then The thank for your order page is displayed

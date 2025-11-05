@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="ba20af32-f693-4f24-ae93-6edad2c37f4a" name="@kkhan 2025-11-05 15:28:16" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-11-05T15:28:16.4204700+00:00" queuing="2025-11-05T15:28:16.4204700+00:00" start="2025-11-05T15:28:13.2316470+00:00" finish="2025-11-05T15:28:44.2904260+00:00" />
+  <TestSettings name="default" id="2d8ce91f-8a1c-407d-8848-f463b596128c">
+    <Deployment runDeploymentRoot="_kkhan_2025-11-05_15_28_16" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="2c88cff4-6878-4a99-a748-cdfe05c0f08a" testId="fcc17cee-c612-e253-935b-80b987aa7a87" testName="StandardUserPlacesOrderWithSingleProductFromProductPage" computerName="kkhan" duration="00:00:06.6642680" startTime="2025-11-05T15:28:37.5693470+00:00" endTime="2025-11-05T15:28:44.2335960+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c88cff4-6878-4a99-a748-cdfe05c0f08a">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I go to the "Sauce Labs Backpack" product page
+-&gt; done: ProductSteps.GivenIGoToTheProductPage("Sauce Labs Backpack") (0.1s)
+And I add product to cart
+-&gt; done: ProductSteps.GivenIAddProductToCart() (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.2s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+When I click checkout
+-&gt; done: CartSteps.WhenIClickCheckout() (0.0s)
+And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
+-&gt; done: CheckoutSteps.CompleteMyInfo("Kamran", "Khan", "IG3 9XG") (0.1s)
+And I click continue
+-&gt; error: Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]") (5.0s)
+Then The checkout overview page is displayed for "Sauce Labs Backpack" product
+-&gt; skipped because of previous errors
+When I click finish
+-&gt; skipped because of previous errors
+Then The thank for your order page is displayed
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]")</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message) in /_/src/Playwright/Core/AssertionsBase.cs:line 84
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 64
+   at MyTests.Pages.CheckoutPages.ClickContinueAsync() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/pages/checkout.page.cs:line 46
+   at MyTests.Steps.CheckoutSteps.WhenIClickContinue() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/steps/checkout.steps.cs:line 34
+   at TechTalk.SpecFlow.Bindings.SynchronousBindingDelegateInvoker.&lt;&gt;c__DisplayClass2_0.&lt;&lt;InvokeBindingDelegateAsync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.&lt;&gt;c__DisplayClass1_0`1.&lt;&lt;RunSync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.ExclusiveSynchronizationContext.BeginMessageLoop()
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.RunSync[T](Func`1 task)
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at tests.Features.PlacingOrderWithProductsFeature.ScenarioCleanup()
+   at tests.Features.PlacingOrderWithProductsFeature.StandardUserPlacesOrderWithSingleProductFromProductPage() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/features/checkout.feature:line 36
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c7f8f4d3-f35d-43e7-8354-176722be99fe" testId="84a1ff0a-c055-e922-72d6-dad4ade565af" testName="StandardUserPlacesOrderWithSingleProductFromInventoryPage" computerName="kkhan" duration="00:00:06.5010410" startTime="2025-11-05T15:28:31.0682980+00:00" endTime="2025-11-05T15:28:37.5693190+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7f8f4d3-f35d-43e7-8354-176722be99fe">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+When I click checkout
+-&gt; done: CartSteps.WhenIClickCheckout() (0.0s)
+And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
+-&gt; done: CheckoutSteps.CompleteMyInfo("Kamran", "Khan", "IG3 9XG") (0.1s)
+And I click continue
+-&gt; error: Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]") (5.0s)
+Then The checkout overview page is displayed for "Sauce Labs Backpack" product
+-&gt; skipped because of previous errors
+When I click finish
+-&gt; skipped because of previous errors
+Then The thank for your order page is displayed
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]")</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message) in /_/src/Playwright/Core/AssertionsBase.cs:line 84
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 64
+   at MyTests.Pages.CheckoutPages.ClickContinueAsync() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/pages/checkout.page.cs:line 46
+   at MyTests.Steps.CheckoutSteps.WhenIClickContinue() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/steps/checkout.steps.cs:line 34
+   at TechTalk.SpecFlow.Bindings.SynchronousBindingDelegateInvoker.&lt;&gt;c__DisplayClass2_0.&lt;&lt;InvokeBindingDelegateAsync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.&lt;&gt;c__DisplayClass1_0`1.&lt;&lt;RunSync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.ExclusiveSynchronizationContext.BeginMessageLoop()
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.RunSync[T](Func`1 task)
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at tests.Features.PlacingOrderWithProductsFeature.ScenarioCleanup()
+   at tests.Features.PlacingOrderWithProductsFeature.StandardUserPlacesOrderWithSingleProductFromInventoryPage() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/features/checkout.feature:line 20
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="653cd764-49f7-4b6e-8037-0a871e5f37d4" testId="71868f5f-e6c0-7c9a-1cf4-bdb1dbf03e0c" testName="PerformanceGlitchLogsInToViewInventoryPage" computerName="kkhan" duration="00:00:06.3663910" startTime="2025-11-05T15:28:19.4461870+00:00" endTime="2025-11-05T15:28:25.8125590+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="653cd764-49f7-4b6e-8037-0a871e5f37d4">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "performance_glitch_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("performance_glitc...") (5.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And The inventory should have all items displayed
+-&gt; done: InventorySteps.ThenInventoryShouldHaveAllItemsDisplayed() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4f65b31f-2c60-44b8-841a-192f121cf0cc" testId="8aa33c74-2f9e-ff14-362d-768b114006e4" testName="SortProductsByPriceHighToLow" computerName="kkhan" duration="00:00:01.3355170" startTime="2025-11-05T15:28:27.0451050+00:00" endTime="2025-11-05T15:28:28.3806180+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f65b31f-2c60-44b8-841a-192f121cf0cc">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+When I sort products by "Price (high to low)"
+-&gt; done: InventorySteps.WhenISortProductsBy("Price (high to low)") (0.0s)
+Then Products should be ordered by "high to low"
+-&gt; error:   Prices are not ordered ascending.
+  Expected and actual are both &lt;System.Collections.Generic.List`1[System.Double]&gt; with 6 elements
+  Values differ at index [0]
+  Expected: 7.9900000000000002d
+  But was:  49.990000000000002d
+ (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>  Prices are not ordered ascending.
+  Expected and actual are both &lt;System.Collections.Generic.List`1[System.Double]&gt; with 6 elements
+  Values differ at index [0]
+  Expected: 7.9900000000000002d
+  But was:  49.990000000000002d
+</Message>
+          <StackTrace>   at MyTests.Pages.InventoryPage.OrderedProductsAsync(String order) in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/pages/inventory.page.cs:line 81
+   at MyTests.Steps.InventorySteps.ThenProductsShouldBeOrderedBy(String order) in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/steps/inventory.steps.cs:line 34
+   at TechTalk.SpecFlow.Bindings.SynchronousBindingDelegateInvoker.&lt;&gt;c__DisplayClass2_0.&lt;&lt;InvokeBindingDelegateAsync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.&lt;&gt;c__DisplayClass1_0`1.&lt;&lt;RunSync&gt;b__0&gt;d.MoveNext()
+--- End of stack trace from previous location ---
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.ExclusiveSynchronizationContext.BeginMessageLoop()
+   at TechTalk.SpecFlow.Bindings.AsyncHelpers.RunSync[T](Func`1 task)
+   at TechTalk.SpecFlow.Bindings.SynchronousBindingDelegateInvoker.InvokeBindingDelegateAsync(Delegate bindingDelegate, Object[] invokeArgs)
+   at TechTalk.SpecFlow.Bindings.SynchronousBindingDelegateInvoker.InvokeDelegateSynchronously(Delegate bindingDelegate, Object[] invokeArgs)
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at tests.Features.InventoryPageFeature.ScenarioCleanup()
+   at tests.Features.InventoryPageFeature.SortProductsByPriceHighToLow() in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/features/inventory.feature:line 15
+
+1)    at MyTests.Pages.InventoryPage.OrderedProductsAsync(String order) in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/pages/inventory.page.cs:line 81
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3c28a080-d17c-4c16-9712-6e1593d83234" testId="190edf7b-c298-3630-db6c-25cf19ddd350" testName="UserViewsEmptyCart" computerName="kkhan" duration="00:00:01.4640750" startTime="2025-11-05T15:28:16.6480070+00:00" endTime="2025-11-05T15:28:18.1120770+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c28a080-d17c-4c16-9712-6e1593d83234">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart page should be empty
+-&gt; done: CartSteps.ThenTheCartPageShouldBeEmpty() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="168598d2-616a-42b0-9e40-3e0ec152b6c3" testId="d30d87de-bf5b-df2c-e2e3-2d31b21cf4ce" testName="LockedOutUserNotAbleToLoginWithCorrectPassword" computerName="kkhan" duration="00:00:01.3240110" startTime="2025-11-05T15:28:28.3811910+00:00" endTime="2025-11-05T15:28:29.7051980+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="168598d2-616a-42b0-9e40-3e0ec152b6c3">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "locked_out_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("locked_out_user") (0.1s)
+Then I should not be logged in and see locked out message
+-&gt; done: LoginSteps.ThenIShouldSeeLockedOutMessage() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2c75483f-e484-4296-a349-4d0038f53063" testId="68a4328b-dee2-9c54-23f9-f22f1ccafcef" testName="InventoryPageDisplayedWithAtLeast1Product" computerName="kkhan" duration="00:00:01.3320740" startTime="2025-11-05T15:28:18.1140910+00:00" endTime="2025-11-05T15:28:19.4461610+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c75483f-e484-4296-a349-4d0038f53063">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And The inventory should have all items displayed
+-&gt; done: InventorySteps.ThenInventoryShouldHaveAllItemsDisplayed() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="79e51aea-e88f-47cd-907c-4ac3bbe7862c" testId="b4dddd59-9687-9af8-3a9d-97718f1f08d7" testName="ProblemUserViewsInventoryPage" computerName="kkhan" duration="00:00:01.2324940" startTime="2025-11-05T15:28:25.8125890+00:00" endTime="2025-11-05T15:28:27.0450780+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79e51aea-e88f-47cd-907c-4ac3bbe7862c">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "problem_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("problem_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And Product "sauce-labs-backpack" image should not have the placeholder image
+-&gt; done: InventorySteps.ThenProductImageShouldNotHavePlaceholder("sauce-labs-backpack") (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5196373e-cd04-4943-8fdf-3ea45b03be19" testId="37fc1282-62f9-e27e-d9d4-eefc34172fa5" testName="UserRemovesSingleProductFromCart" computerName="kkhan" duration="00:00:01.4685510" startTime="2025-11-05T15:28:15.1794120+00:00" endTime="2025-11-05T15:28:16.6479580+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5196373e-cd04-4943-8fdf-3ea45b03be19">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+And The product in cart should be "Sauce Labs Backpack"
+-&gt; done: CartSteps.ThenTheProductInCartShouldBe("Sauce Labs Backpack") (0.0s)
+Given I remove "Sauce Labs Backpack" product from cart
+-&gt; done: CartSteps.GivenIRemoveProductFromCart("Sauce Labs Backpack") (0.0s)
+Then The cart page should be empty
+-&gt; done: CartSteps.ThenTheCartPageShouldBeEmpty() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4c92acf0-09d6-4d58-9827-45a2a42d7066" testId="75243d35-787d-16e4-0abc-7a9c0126edd4" testName="UserHasSingleProductInCart" computerName="kkhan" duration="00:00:01.6685520" startTime="2025-11-05T15:28:13.5102050+00:00" endTime="2025-11-05T15:28:15.1787170+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c92acf0-09d6-4d58-9827-45a2a42d7066">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+And The product in cart should be "Sauce Labs Backpack"
+-&gt; done: CartSteps.ThenTheProductInCartShouldBe("Sauce Labs Backpack") (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6b01af8d-a8ec-4770-9441-a823f5ee2883" testId="b5803bd3-9c83-84a3-0e32-57a33f732355" testName="StandardUserAbleToLoginSuccessfully" computerName="kkhan" duration="00:00:01.3626080" startTime="2025-11-05T15:28:29.7052540+00:00" endTime="2025-11-05T15:28:31.0678580+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b01af8d-a8ec-4770-9441-a823f5ee2883">
+      <Output>
+        <StdOut>Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="StandardUserPlacesOrderWithSingleProductFromInventoryPage" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="84a1ff0a-c055-e922-72d6-dad4ade565af">
+      <Execution id="c7f8f4d3-f35d-43e7-8354-176722be99fe" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.PlacingOrderWithProductsFeature" name="StandardUserPlacesOrderWithSingleProductFromInventoryPage" />
+    </UnitTest>
+    <UnitTest name="InventoryPageDisplayedWithAtLeast1Product" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="68a4328b-dee2-9c54-23f9-f22f1ccafcef">
+      <Execution id="2c75483f-e484-4296-a349-4d0038f53063" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.InventoryPageFeature" name="InventoryPageDisplayedWithAtLeast1Product" />
+    </UnitTest>
+    <UnitTest name="StandardUserPlacesOrderWithSingleProductFromProductPage" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="fcc17cee-c612-e253-935b-80b987aa7a87">
+      <Execution id="2c88cff4-6878-4a99-a748-cdfe05c0f08a" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.PlacingOrderWithProductsFeature" name="StandardUserPlacesOrderWithSingleProductFromProductPage" />
+    </UnitTest>
+    <UnitTest name="UserViewsEmptyCart" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="190edf7b-c298-3630-db6c-25cf19ddd350">
+      <Execution id="3c28a080-d17c-4c16-9712-6e1593d83234" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.CartPageFeature" name="UserViewsEmptyCart" />
+    </UnitTest>
+    <UnitTest name="UserHasSingleProductInCart" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="75243d35-787d-16e4-0abc-7a9c0126edd4">
+      <Execution id="4c92acf0-09d6-4d58-9827-45a2a42d7066" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.CartPageFeature" name="UserHasSingleProductInCart" />
+    </UnitTest>
+    <UnitTest name="ProblemUserViewsInventoryPage" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="b4dddd59-9687-9af8-3a9d-97718f1f08d7">
+      <Execution id="79e51aea-e88f-47cd-907c-4ac3bbe7862c" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.InventoryPageFeature" name="ProblemUserViewsInventoryPage" />
+    </UnitTest>
+    <UnitTest name="LockedOutUserNotAbleToLoginWithCorrectPassword" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="d30d87de-bf5b-df2c-e2e3-2d31b21cf4ce">
+      <Execution id="168598d2-616a-42b0-9e40-3e0ec152b6c3" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.LoginWithUsersInDifferentStatesFeature" name="LockedOutUserNotAbleToLoginWithCorrectPassword" />
+    </UnitTest>
+    <UnitTest name="UserRemovesSingleProductFromCart" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="37fc1282-62f9-e27e-d9d4-eefc34172fa5">
+      <Execution id="5196373e-cd04-4943-8fdf-3ea45b03be19" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.CartPageFeature" name="UserRemovesSingleProductFromCart" />
+    </UnitTest>
+    <UnitTest name="SortProductsByPriceHighToLow" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="8aa33c74-2f9e-ff14-362d-768b114006e4">
+      <Execution id="4f65b31f-2c60-44b8-841a-192f121cf0cc" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.InventoryPageFeature" name="SortProductsByPriceHighToLow" />
+    </UnitTest>
+    <UnitTest name="PerformanceGlitchLogsInToViewInventoryPage" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="71868f5f-e6c0-7c9a-1cf4-bdb1dbf03e0c">
+      <Execution id="653cd764-49f7-4b6e-8037-0a871e5f37d4" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.InventoryPageFeature" name="PerformanceGlitchLogsInToViewInventoryPage" />
+    </UnitTest>
+    <UnitTest name="StandardUserAbleToLoginSuccessfully" storage="/users/kamran.khan/projects/rkoswk-c#-framework/tests/bin/debug/net9.0/tests.dll" id="b5803bd3-9c83-84a3-0e32-57a33f732355">
+      <Execution id="6b01af8d-a8ec-4770-9441-a823f5ee2883" />
+      <TestMethod codeBase="/Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="tests.Features.LoginWithUsersInDifferentStatesFeature" name="StandardUserAbleToLoginSuccessfully" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="fcc17cee-c612-e253-935b-80b987aa7a87" executionId="2c88cff4-6878-4a99-a748-cdfe05c0f08a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84a1ff0a-c055-e922-72d6-dad4ade565af" executionId="c7f8f4d3-f35d-43e7-8354-176722be99fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71868f5f-e6c0-7c9a-1cf4-bdb1dbf03e0c" executionId="653cd764-49f7-4b6e-8037-0a871e5f37d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8aa33c74-2f9e-ff14-362d-768b114006e4" executionId="4f65b31f-2c60-44b8-841a-192f121cf0cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="190edf7b-c298-3630-db6c-25cf19ddd350" executionId="3c28a080-d17c-4c16-9712-6e1593d83234" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d30d87de-bf5b-df2c-e2e3-2d31b21cf4ce" executionId="168598d2-616a-42b0-9e40-3e0ec152b6c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68a4328b-dee2-9c54-23f9-f22f1ccafcef" executionId="2c75483f-e484-4296-a349-4d0038f53063" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4dddd59-9687-9af8-3a9d-97718f1f08d7" executionId="79e51aea-e88f-47cd-907c-4ac3bbe7862c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="37fc1282-62f9-e27e-d9d4-eefc34172fa5" executionId="5196373e-cd04-4943-8fdf-3ea45b03be19" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="75243d35-787d-16e4-0abc-7a9c0126edd4" executionId="4c92acf0-09d6-4d58-9827-45a2a42d7066" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5803bd3-9c83-84a3-0e32-57a33f732355" executionId="6b01af8d-a8ec-4770-9441-a823f5ee2883" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="11" executed="11" passed="8" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.6.0.0: Test execution started
+Running all tests in /Users/kamran.khan/Projects/rkoswk-c#-framework/tests/bin/Debug/net9.0/tests.dll
+   NUnit3TestExecutor discovered 11 of 11 NUnit test cases using Current Discovery mode, Non-Explicit run
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+And The product in cart should be "Sauce Labs Backpack"
+-&gt; done: CartSteps.ThenTheProductInCartShouldBe("Sauce Labs Backpack") (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+And The product in cart should be "Sauce Labs Backpack"
+-&gt; done: CartSteps.ThenTheProductInCartShouldBe("Sauce Labs Backpack") (0.0s)
+Given I remove "Sauce Labs Backpack" product from cart
+-&gt; done: CartSteps.GivenIRemoveProductFromCart("Sauce Labs Backpack") (0.0s)
+Then The cart page should be empty
+-&gt; done: CartSteps.ThenTheCartPageShouldBeEmpty() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart page should be empty
+-&gt; done: CartSteps.ThenTheCartPageShouldBeEmpty() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And The inventory should have all items displayed
+-&gt; done: InventorySteps.ThenInventoryShouldHaveAllItemsDisplayed() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "performance_glitch_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("performance_glitc...") (5.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And The inventory should have all items displayed
+-&gt; done: InventorySteps.ThenInventoryShouldHaveAllItemsDisplayed() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "problem_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("problem_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+And Product "sauce-labs-backpack" image should not have the placeholder image
+-&gt; done: InventorySteps.ThenProductImageShouldNotHavePlaceholder("sauce-labs-backpack") (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.5s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+When I sort products by "Price (high to low)"
+-&gt; done: InventorySteps.WhenISortProductsBy("Price (high to low)") (0.0s)
+Then Products should be ordered by "high to low"
+-&gt; error:   Prices are not ordered ascending.
+  Expected and actual are both &lt;System.Collections.Generic.List`1[System.Double]&gt; with 6 elements
+  Values differ at index [0]
+  Expected: 7.9900000000000002d
+  But was:  49.990000000000002d
+ (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "locked_out_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("locked_out_user") (0.1s)
+Then I should not be logged in and see locked out message
+-&gt; done: LoginSteps.ThenIShouldSeeLockedOutMessage() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I add "Sauce Labs Backpack" product to cart
+-&gt; done: InventorySteps.GivenIAddProductToCart("Sauce Labs Backpack") (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.1s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+When I click checkout
+-&gt; done: CartSteps.WhenIClickCheckout() (0.0s)
+And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
+-&gt; done: CheckoutSteps.CompleteMyInfo("Kamran", "Khan", "IG3 9XG") (0.1s)
+And I click continue
+-&gt; error: Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]") (5.0s)
+Then The checkout overview page is displayed for "Sauce Labs Backpack" product
+-&gt; skipped because of previous errors
+When I click finish
+-&gt; skipped because of previous errors
+Then The thank for your order page is displayed
+-&gt; skipped because of previous errors
+
+Given I open the login page
+-&gt; done: LoginSteps.GivenIOpenTheLoginPage() (0.4s)
+When I enter my "standard_user" username and password
+-&gt; done: LoginSteps.WhenIEnterMyUsernameAndPassword("standard_user") (0.1s)
+Then I should be logged in successfully
+-&gt; done: LoginSteps.ThenIShouldBeLoggedInSuccessfully() (0.0s)
+Given I go to the "Sauce Labs Backpack" product page
+-&gt; done: ProductSteps.GivenIGoToTheProductPage("Sauce Labs Backpack") (0.1s)
+And I add product to cart
+-&gt; done: ProductSteps.GivenIAddProductToCart() (0.0s)
+When I open the cart page
+-&gt; done: CartSteps.OpenCartPageAsync() (0.2s)
+Then The cart should have 1 items
+-&gt; done: CartSteps.ThenTheCartShouldHaveItems(1) (0.0s)
+When I click checkout
+-&gt; done: CartSteps.WhenIClickCheckout() (0.0s)
+And Complete my information using first name "Kamran" last name "Khan" postcode "IG3 9XG"
+-&gt; done: CheckoutSteps.CompleteMyInfo("Kamran", "Khan", "IG3 9XG") (0.1s)
+And I click continue
+-&gt; error: Locator expected to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"continue\"]") (5.0s)
+Then The checkout overview page is displayed for "Sauce Labs Backpack" product
+-&gt; skipped because of previous errors
+When I click finish
+-&gt; skipped because of previous errors
+Then The thank for your order page is displayed
+-&gt; skipped because of previous errors
+
+NUnit Adapter 4.6.0.0: Test execution complete
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

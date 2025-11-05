@@ -1,43 +1,58 @@
-### Objective
+# 🧪 Playwright SpecFlow C# Automation Framework
 
-Your assignment is to write automated test cases for an online shop to test the core functionality of the site.
+This is an end-to-end UI automation framework built with **.NET (C#)**, **Playwright**, and **SpecFlow (BDD)**.  
+It was converted from a TypeScript Playwright setup into a clean C#-based test framework for maintainability, scalability, and CI/CD integration.
 
-### Brief
+---
 
-The product team at Waracle has come up with a [simple MVP for an online shop](https://qa-challenge.codesubmit.io). Help the team get confidence in further development by automatically testing the most critical features of the app by doing the following:
+## 🚀 Tech Stack
 
-### Tasks
+| Component | Description |
+|------------|--------------|
+| **.NET 9** | Target framework |
+| **C#** | Core programming language |
+| **Playwright for .NET** | Browser automation and UI testing |
+| **SpecFlow** | BDD framework (Cucumber for .NET) |
+| **NUnit** | Test runner integration |
+| **BoDi** | Dependency Injection container for SpecFlow |
+| **Microsoft.Playwright.NUnit** | Integration layer for Playwright + NUnit |
+| **TestExecution.json** | Test results output for LivingDoc reports |
 
--   Compile a list of several testable user flows, cases, or scenarios. This doesn't have to cover every possible real-life case; please focus on what you think is most fundamental (e.g., sign in).
 
-| Site        | URL                                |
-| ----------- | ---------------------------------- |
-| Online Shop | https://qa-challenge.codesubmit.io |
+---
 
-Make sure to test scenarios for all provided user accounts.
+## 🧩 Prerequisites
 
-| User                    | Description                                                             |
-| ----------------------- | ----------------------------------------------------------------------- |
-| standard_user           | The site should work as expected for this user                          |
-| locked_out_user         | User is locked out and should not be able to log in.                    |
-| problem_user            | Images are not loading for this user.                                   |
-| performance_glitch_user | This user has high loading times. Does the site still work as expected? |
+Make sure you have the following installed:
 
--   Implement automated browser tests for all flows. Use any testing technology you'd like – Cypress, Selenium, or any other you think would work well
+- **.NET SDK 9.0+** → [Download .NET](https://dotnet.microsoft.com/download)
+- **Playwright Browsers**
+  ```bash
+  cd tests
+  pwsh bin/Debug/net9.0/playwright.ps1 install
 
-### Evaluation Criteria
+1️⃣ Restore dependencies
+dotnet restore
 
--   **Automation & QA** best practices
--   Show us your work through your commit history
--   We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program
--   Completeness: did you complete the features?
--   Correctness: does the functionality act in sensible, thought-out ways?
--   Maintainability: is it written in a clean, maintainable way?
+2️⃣ Build the solution
+dotnet build
 
-### CodeSubmit
+3️⃣ Run tests
 
-Please organize, design, test and document your code as if it were going into production - then push your changes to the master branch. After you have pushed your code, you may submit the assignment on the assignment page.
+From the tests folder:
+dotnet test -c Debug -f net9.0
 
-**Have fun building!** 🚀
+Generate Test Report (SpecFlow LivingDoc)
 
-The Waracle Team
+You can create a rich, interactive HTML report for all executed SpecFlow scenarios using SpecFlow LivingDoc.
+
+🔧 Prerequisites
+
+Ensure the global LivingDoc CLI is installed:
+dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+
+Generate the HTML report:
+livingdoc test-assembly bin/Debug/net9.0/tests.dll --output LivingDoc.html --test-execution-json bin/Debug/net9.0/TestExecution.json
+
+Open reoprt: 
+open LivingDoc.html
