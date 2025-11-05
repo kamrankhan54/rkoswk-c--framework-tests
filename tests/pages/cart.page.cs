@@ -1,43 +1,48 @@
-// CartPage.cs
 using System.Threading.Tasks;
 using Microsoft.Playwright;
-using static Microsoft.Playwright.Assertions;
-using MyTests.Support;
 
-namespace MyTests.Pages;
-
-public sealed class CartPage
+namespace MyTests.Pages
 {
-    private readonly IPage _page;
-    private readonly string _cartPageUrl;
-
-    public CartPage(IPage page, string cartPageUrl)
+    public static class Utils
     {
-        _page = page;
-        _cartPageUrl = cartPageUrl;
+        public static string ProductSlug(string name) =>
+            name.ToLowerInvariant().Trim().Replace(" ", "-");
     }
 
-    // NAVIGATION
-    public Task OpenAsync() => _page.GotoAsync(_cartPageUrl);
-
-    // LOCATORS
-    public ILocator InventoryItem => _page.Locator("[data-test=\"inventory-item\"]");
-    public ILocator ItemName => _page.Locator("[data-test=\"inventory-item-name\"]");
-    public ILocator RemoveProduct(string name) => _page.Locator($"[data-test=\"remove-{name}\"]");
-    public ILocator CheckoutButton => _page.Locator("[data-test=\"checkout\"]");
-
-    // ACTIONS
-    public async Task RemoveItemAsync(string name)
+    public class CartPage
     {
-        var slug = Utils.ProductSlug(name); // your productSlug equivalent
-        var removeButton = RemoveProduct(slug);
-        await Expect(removeButton).ToBeVisibleAsync();
-        await removeButton.ClickAsync();
-    }
+        private readonly IPage _page;
 
-    public async Task ClickCheckoutAsync()
-    {
-        await Expect(CheckoutButton).ToBeVisibleAsync();
-        await CheckoutButton.ClickAsync();
+        public CartPage(IPage page)
+        {
+            _page = page;
+        }
+
+        public async Task OpenAsync(string? url = null)
+        {
+            url ??= "https://www.saucedemo.com/cart.html"; // replace with your config if needed
+            await _page.GotoAsync(url);
+        }
+
+        public ILocator InventoryItem()  => _page.Locator("[data-test='inventory-item']");
+        public ILocator ItemName()       => _page.Locator("[data-test='inventory-item-name']");
+        public ILocator CheckoutButton() => _page.Locator("[data-test='checkout']");
+        public ILocator RemoveProduct(string slug) => _page.Locator($"[data-test='remove-{slug}']");
+
+        public async Task RemoveItemAsync(string name)
+        {
+            var slug = Utils.ProductSlug(name);
+            var removeButton = RemoveProduct(slug);
+            await removeButton.WaitForAsync(new() { State = WaitForSelectorState.Visible, Timeout = 10000 });
+            await removeButton.ClickAsync();
+        }
+
+        public async Task ClickCheckoutAsync()
+        {
+            var btn = CheckoutButton();
+            await btn.WaitForAsync(new() { State = WaitForSelectorState.Visible, Timeout = 10000 });
+            await btn.ClickAsync();
+            await _page.WaitForURLAsync("**/checkout-step-one.html");
+        }
     }
 }

@@ -1,59 +1,67 @@
-// Hooks/Hooks.cs
 using System.Threading.Tasks;
-using Microsoft.Playwright;
 using TechTalk.SpecFlow;
-using BoDi; // SpecFlow's built-in DI container
-using MyTests.Pages;
+using Microsoft.Playwright;
+using BoDi;
 
-namespace MyTests.Hooks;
-
-[Binding]
-public sealed class Hooks
+namespace MyTests.Hooks
 {
-    private readonly IObjectContainer _container;
-    private IBrowser _browser;
-    private IPage _page;
-
-    public Hooks(IObjectContainer container)
+    [Binding]
+    public class Hooks
     {
-        _container = container;
-    }
+        private readonly IObjectContainer _container;
+        private IPlaywright _playwright;
+        private IBrowser _browser;
+        private IBrowserContext _context;
+        private IPage _page;
 
-    [BeforeScenario(Order = 0)]
-    public async Task SetupPlaywrightAsync()
-    {
-        // Launch a browser
-        var playwright = await Playwright.CreateAsync();
-       _browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        public Hooks(IObjectContainer container)
         {
-            Headless = false
-        });
+            _container = container;
+        }
 
+        [BeforeScenario]
+        public async Task BeforeScenario()
+        {
+            // Create Playwright instance
+            _playwright = await Playwright.CreateAsync();
 
-        // Create a new browser context and page
-        var context = await _browser.NewContextAsync();
-        _page = await context.NewPageAsync();
+            // Launch a new browser instance (headless by default)
+            _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = true,
+                Args = new[] { "--start-maximized" }
+            });
 
-        // Register instances so SpecFlow can inject them
-        _container.RegisterInstanceAs(_browser);
-        _container.RegisterInstanceAs(context);
-        _container.RegisterInstanceAs(_page);
+            // Create an isolated browser context per scenario
+            _context = await _browser.NewContextAsync(new BrowserNewContextOptions
+            {
+                ViewportSize = null // Use full window size
+            });
 
-        // Register your Page Objects (equivalent to Playwright fixtures)
-        _container.RegisterInstanceAs(new LoginPage(_page, "https://www.saucedemo.com/"));
-        _container.RegisterInstanceAs(new CartPage(_page, "https://www.saucedemo.com/cart.html"));
-        _container.RegisterInstanceAs(new InventoryPage(_page));
-        _container.RegisterInstanceAs(new CheckoutPages(_page));
-        _container.RegisterInstanceAs(new ProductDetailPage(_page));
-    }
+            // Open a fresh page for this scenario
+            _page = await _context.NewPageAsync();
 
-    [AfterScenario]
-    public async Task TearDownAsync()
-    {
-        if (_page != null)
-            await _page.CloseAsync();
+            // Register page for dependency injection
+            _container.RegisterInstanceAs(_page);
+        }
 
-        if (_browser != null)
-            await _browser.CloseAsync();
+        [AfterScenario]
+        public async Task AfterScenario()
+        {
+            // Clean up in reverse order
+            if (_context != null)
+            {
+                await _context.CloseAsync();
+                _context = null;
+            }
+
+            if (_browser != null)
+            {
+                await _browser.CloseAsync();
+                _browser = null;
+            }
+
+            _playwright?.Dispose();
+        }
     }
 }

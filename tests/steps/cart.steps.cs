@@ -1,57 +1,56 @@
 using System.Threading.Tasks;
-using NUnit.Framework;
 using TechTalk.SpecFlow;
-using MyTests.Pages;
+using NUnit.Framework;
 using static Microsoft.Playwright.Assertions;
+using MyTests.Pages;
 
-namespace MyTests.Steps;
-
-[Binding]
-public sealed class CartSteps
+namespace MyTests.Steps
 {
-    private readonly CartPage _cart;
-
-    public CartSteps(CartPage cart)
+    [Binding]
+    public class CartSteps
     {
-        _cart = cart;
-    }
+        private readonly CartPage _cart;
 
-    // Map both Given & When as your features use both
-    [Given(@"I open the cart page")]
-    [When(@"I open the cart page")]
-    public async Task OpenCartPageAsync()
-    {
-        await _cart.OpenAsync();
-    }
+        public CartSteps(CartPage cart)
+        {
+            _cart = cart;
+        }
 
-    [When(@"I click checkout")]
-    public async Task WhenIClickCheckout()
-    {
-        await _cart.ClickCheckoutAsync();
-    }
+        [When(@"I open the cart page")]
+        public async Task OpenCartPageAsync()
+        {
+            await _cart.OpenAsync();
+        }
 
-    [Given(@"I remove ""(.*)"" product from cart")]
-    public async Task GivenIRemoveProductFromCart(string name)
-    {
-        await _cart.RemoveItemAsync(name);
-    }
+        [When(@"I click checkout")]
+        public async Task WhenIClickCheckout()
+        {
+            await _cart.ClickCheckoutAsync();
+        }
 
-    [Then(@"The cart page should be empty")]
-    public async Task ThenTheCartPageShouldBeEmpty()
-    {
-        await Expect(_cart.InventoryItem).ToHaveCountAsync(0);
-    }
+        [Given(@"I remove ""(.*)"" product from cart")]
+        public async Task GivenIRemoveProductFromCart(string name)
+        {
+            await _cart.RemoveItemAsync(name);
+        }
 
-    [Then(@"The cart should have (.*) items")]
-    public async Task ThenTheCartShouldHaveItems(int itemCount)
-    {
-        await Expect(_cart.InventoryItem).ToHaveCountAsync(itemCount);
-    }
+        [Then(@"The cart page should be empty")]
+        public async Task ThenTheCartPageShouldBeEmpty()
+        {
+            await Expect(_cart.InventoryItem()).ToHaveCountAsync(0);
+        }
 
-    [Then(@"The product in cart should be ""(.*)""")]
-    public async Task ThenTheProductInCartShouldBe(string name)
-    {
-        var productName = (await _cart.ItemName.InnerTextAsync()).Trim();
-        Assert.That(productName, Is.EqualTo(name));
+        [Then(@"The cart should have (.*) items")]
+        public async Task ThenTheCartShouldHaveItems(int itemCount)
+        {
+            await Expect(_cart.InventoryItem()).ToHaveCountAsync(itemCount);
+        }
+
+        [Then(@"The product in cart should be ""(.*)""")]
+        public async Task ThenTheProductInCartShouldBe(string expectedName)
+        {
+            var actualName = (await _cart.ItemName().InnerTextAsync()).Trim();
+            Assert.That(actualName, Is.EqualTo(expectedName));
+        }
     }
 }

@@ -8,6 +8,9 @@
 
     <!-- Auto-download Playwright browsers on build -->
     <PlaywrightInstallBrowsers>true</PlaywrightInstallBrowsers>
+
+    <ParallelizeAssembly>true</ParallelizeAssembly>
+    <ParallelizeTestCollections>true</ParallelizeTestCollections>
   </PropertyGroup>
 
   <ItemGroup>

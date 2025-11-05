@@ -48,6 +48,18 @@ From the tests folder:
 dotnet test -c Debug -f net9.0
 ```
 
+Run tests in parallel:
+```bash
+dotnet test -- NUnit.NumberOfTestWorkers=6
+```
+
+Recommended Pre-Run Clean:
+```bash
+dotnet clean
+dotnet build
+dotnet test -- NUnit.NumberOfTestWorkers=6
+```
+
 Generate Test Report (SpecFlow LivingDoc)
 
 You can create a rich, interactive HTML report for all executed SpecFlow scenarios using SpecFlow LivingDoc.

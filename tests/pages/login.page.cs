@@ -1,46 +1,46 @@
-// LoginPage.cs
 using System.Threading.Tasks;
 using Microsoft.Playwright;
-using static Microsoft.Playwright.Assertions;
 
-namespace MyTests.Pages;
-
-public sealed class LoginPage
+namespace MyTests.Pages
 {
-    private readonly IPage _page;
-    private readonly string _loginPageUrl;
-
-    public LoginPage(IPage page, string loginPageUrl)
+    public class LoginPage
     {
-        _page = page;
-        _loginPageUrl = loginPageUrl;
-    }
+        private readonly IPage _page;
 
-    // NAVIGATION
-    public Task OpenAsync() => _page.GotoAsync(_loginPageUrl);
+        public LoginPage(IPage page)
+        {
+            _page = page;
+        }
 
-    // LOCATORS
-    public ILocator UsernameInput => _page.Locator("input[data-test=\"username\"]");
-    public ILocator PasswordInput => _page.Locator("input[data-test=\"password\"]");
-    public ILocator LoginButton   => _page.Locator("input[data-test=\"login-button\"]");
-    public ILocator ErrorMessage  => _page.Locator("[data-test=\"error\"]");
+        // Option A: read from your existing data.json helper
+        public async Task OpenAsync(string? url = null)
+        {
+            // If you already have a data provider/helper, call it here.
+            // Example (adjust to your helper):
+            url ??= "https://www.saucedemo.com/";
+            await _page.GotoAsync(url);
+        }
 
-    // ACTIONS
-    public async Task LoginAsync(string username, string password)
-    {
-        await UsernameInput.FillAsync(username);
-        await PasswordInput.FillAsync(password);
-        await LoginButton.ClickAsync();
-    }
+        public ILocator UsernameInput() => _page.Locator("input[data-test='username']");
+        public ILocator PasswordInput() => _page.Locator("input[data-test='password']");
+        public ILocator LoginButton()   => _page.Locator("input[data-test='login-button']");
+        public ILocator ErrorMessage()  => _page.Locator("[data-test='error']");
 
-    // VALIDATIONS
-    public async Task ExpectErrorVisibleAsync(string errorText)
-    {
-        await Expect(ErrorMessage).ToContainTextAsync(errorText);
-    }
+        public async Task LoginAsync(string username, string password)
+        {
+            await UsernameInput().FillAsync(username);
+            await PasswordInput().FillAsync(password);
+            await LoginButton().ClickAsync();
+        }
 
-    public async Task ExpectOnInventoryPageAsync()
-    {
-        await Expect(_page).ToHaveURLAsync(new System.Text.RegularExpressions.Regex("inventory\\.html"));
+        public async Task ExpectErrorVisibleAsync(string error)
+        {
+            await Assertions.Expect(ErrorMessage()).ToContainTextAsync(error);
+        }
+
+        public async Task ExpectOnInventoryPageAsync()
+        {
+            await _page.WaitForURLAsync("**/inventory.html");
+        }
     }
 }
